@@ -1,0 +1,40 @@
+<div id="post-create" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Add Link</h4>
+
+        <div class="row">
+            <div class="input-field col s12">
+              {{input value=post.url }}
+                <label for="url">Link</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              {{input value=post.title }}
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              {{input value=post.tags }}
+                <label for="tags">Tags</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+              {{textarea value=post.description class=materialize-textarea}}
+                <label for="coment">Comment</label>
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button {{action 'cancel' }}
+                class=" modal-action waves-effect waves-green btn-flat">Cancel
+        </button>
+        <button {{action 'save' }}
+                class=" modal-action waves-effect waves-green btn-flat">Save Link
+        </button>
+    </div>
+</div>
+
