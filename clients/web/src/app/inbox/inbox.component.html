@@ -1,0 +1,12 @@
+<md-list>
+  <h3 md-subheader>Today</h3>
+  <div *ngIf="unarchived && unarchived.length > 0">
+    <div *ngFor="let item of unarchived">
+      <app-inbox-item [item]="item"></app-inbox-item>
+    </div>
+  </div>
+  <div *ngIf="!unarchived || unarchived.length === 0">
+    Nothing to show!
+  </div>
+
+</md-list>
