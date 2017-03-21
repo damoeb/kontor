@@ -22,11 +22,18 @@ services:
     ports:
       - 9200:9200
 
+  rabbitmq:
+    build: services/rabbitmq
+    container_name: rabbitmq
+
   kontorcore:
-    build: services/core
-    container_name: core
+    build: services/kontor-core
+    container_name: kontor-core
+    links:
+      - elasticsearch
+      - rabbitmq
     volumes:
-      - ./services/core:/usr/src/app/
+      - ./services/kontor-core:/usr/src/app/
     ports:
       - 8080:4000
 

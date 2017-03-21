@@ -5,6 +5,8 @@ const elasticsearch = require('../services/elasticsearch');
 const index = 'posts';
 const type = 'posts';
 
+elasticsearch.assertIndex('posts');
+
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000)
