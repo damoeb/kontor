@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { InboxItemComponent } from './inbox-item/inbox-item.component';
+import { CreatePostComponent } from './create-post/create-post.component';
 
 const appRoutes: Routes = [
   { path: 'inbox', component: InboxComponent },
   { path: 'archive', component: ArchiveComponent },
+  { path: 'create', component: CreatePostComponent },
   // {
   //   path: 'heroes',
   //   component: HeroListComponent,
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     AppComponent,
     InboxComponent,
     ArchiveComponent,
-    InboxItemComponent
+    InboxItemComponent,
+    CreatePostComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

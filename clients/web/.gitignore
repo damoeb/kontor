@@ -7,6 +7,7 @@
 
 # dependencies
 /node_modules
+/src/app/generated/client/*
 
 # IDEs and editors
 /.idea
