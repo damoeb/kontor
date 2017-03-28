@@ -27,7 +27,7 @@ SwaggerExpress.create(config, function(err, swaggerExpress) {
   // install middleware
   swaggerExpress.register(app);
 
-  var port = process.env.PORT || 10010;
+  var port = process.env.PORT || 8080;
   app.listen(port);
 
   console.log('listening to http://127.0.0.1:' + port);

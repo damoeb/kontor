@@ -98,7 +98,7 @@ module.exports = {
   findPost: findPost,
   updatePost: (req, res) => {
     const id = req.swagger.params.id.value;
-    const post = req.swagger.params.post.value.post;
+    const post = req.swagger.params.post.value;
     console.log(`update ${id} ${post}`);
 
     // overwrite
@@ -127,7 +127,7 @@ module.exports = {
       );
   },
   createPost: (req, res) => {
-    const post = req.swagger.params.post.value.post;
+    const post = req.swagger.params.post.value;
     console.log(`create ${post}`);
 
     createPost(post, createResponseHandler(res));

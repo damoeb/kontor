@@ -5,8 +5,8 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
-    "generate:client": "./node_modules/.bin/a2apigen -s ../../services/kontor-core/dist/swagger.json -o src/app/client/",
-    "build": "ng build",
+    "generate:client": "java -jar swagger-codegen-cli.jar generate -i ../../services/kontor-core/dist/swagger.json -o src/app/generated/client -l typescript-angular2",
+    "build": "npm run generate:client && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -24,6 +24,7 @@
     "@angular/router": "^3.4.0",
     "core-js": "^2.4.1",
     "rxjs": "^5.1.0",
+    "superagent": "^3.5.2",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
@@ -31,7 +32,6 @@
     "@angular/compiler-cli": "^2.4.0",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
-    "angular2-swagger-client-generator": "0.0.22",
     "codelyzer": "~2.0.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
@@ -42,6 +42,7 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.0",
+    "swagger-js-codegen": "^1.8.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "~2.0.0"

@@ -14,6 +14,6 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 ENV PORT=4000
 
-CMD [ "/usr/local/bin/node", "./app.js" ]
-#CMD [ "./node_modules/nodemon/bin/nodemon.js", "./app.js" ]
+#CMD [ "/usr/local/bin/node", "./app.js" ]
+CMD [ "./node_modules/nodemon/bin/nodemon.js", "./app.js" ]
 EXPOSE 4000

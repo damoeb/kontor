@@ -14,7 +14,9 @@
     "test": "swagger project test && ember test",
     "serve": "node app",
     "swagger": "swagger project edit",
-    "generate:swaggerjson": "./node_modules/yamljs/bin/yaml2json api/swagger/swagger.yaml > ./dist/swagger.json"
+    "postswagger": "npm run build",
+    "generate:swaggerjson": "./node_modules/yamljs/bin/yaml2json api/swagger/swagger.yaml > ./dist/swagger.json",
+    "build": "npm run generate:swaggerjson"
   },
   "dependencies": {
     "elasticsearch": "^12.1.3",

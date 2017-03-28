@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
+import {DefaultApi as KontorApi} from './generated/client/api/DefaultApi';
 
 import { AppComponent } from './app.component';
 import { InboxComponent } from './inbox/inbox.component';
@@ -43,7 +44,9 @@ const appRoutes: Routes = [
     HttpModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    KontorApi
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

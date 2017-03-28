@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
-import {ApiClientService} from '../client';
+import { Component } from '@angular/core';
+import {DefaultApi as KontorApi} from '../generated/client/api/DefaultApi';
+import {Post} from '../generated/client/model/models';
 
 @Component({
   selector: 'app-create-post',
   templateUrl: './create-post.component.html',
   styleUrls: ['./create-post.component.css']
 })
-export class CreatePostComponent implements OnInit {
-  client:ApiClientService;
+export class CreatePostComponent {
+  kontorApi:KontorApi;
 
-  constructor() {
-    this.client = new ApiClientService(undefined);
+  post:Post = {url:'someurl'};
+
+  constructor(kontorApi:KontorApi) {
+    this.kontorApi = kontorApi;
   }
 
-  ngOnInit() {
+  onSubmit() {
+    console.log('onSubmit', this.post);
+    // this.kontorApi.createPost(post).subscribe(data => console.log(data));
   }
 
 }
