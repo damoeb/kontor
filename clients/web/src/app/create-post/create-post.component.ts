@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {DefaultApi as KontorApi} from '../generated/client/api/DefaultApi';
-import {Post} from '../generated/client/model/models';
+import {Post} from '../generated/client/model/Post';
 
 @Component({
   selector: 'app-create-post',
@@ -20,5 +20,4 @@ export class CreatePostComponent {
     console.log('onSubmit', this.post);
     // this.kontorApi.createPost(post).subscribe(data => console.log(data));
   }
-
 }

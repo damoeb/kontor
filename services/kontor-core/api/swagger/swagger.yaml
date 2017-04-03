@@ -17,10 +17,10 @@ produces:
   - application/json
 paths:
   /posts/{id}:
-    x-swagger-router-controller: postsController
+    x-swagger-router-controller: archiveController
     get:
       description: Returns the post with the provided `id`
-      operationId: findPost
+      operationId: findArchivePost
       parameters:
         - name: id
           in: path
@@ -77,7 +77,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /posts:
-    x-swagger-router-controller: postsController
+    x-swagger-router-controller: archiveController
     post:
       description: Creates a post
       operationId: createPost
@@ -98,7 +98,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     get:
       description: Returns the posts
-      operationId: filterPosts
+      operationId: filterArchivePosts
       responses:
         "200":
           description: Success
@@ -114,10 +114,28 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
   /inbox:
-    x-swagger-router-controller: postsController
+    x-swagger-router-controller: inboxController
+    post:
+      description: Add an inbox post
+      operationId: addPostToInbox
+      parameters:
+        - name: post
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Post"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Post"
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
     get:
       description: Returns the posts of the inbox
-      operationId: inboxPosts
+      operationId: filterInboxPosts
       responses:
         "200":
           description: Success
@@ -132,7 +150,69 @@ paths:
           description: Unexpected Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
+  /inbox/{id}:
+    x-swagger-router-controller: inboxController
+    get:
+      description: Returns the post with the provided `id`
+      operationId: findInboxPost
+      parameters:
+        - name: id
+          in: path
+          description: The id of the post
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Post"
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /inbox/{id}/accept:
+    x-swagger-router-controller: inboxController
+    put:
+      description: Accepts an inbox post with the provided `id`
+      operationId: acceptInboxPost
+      parameters:
+        - name: id
+          in: path
+          description: The id of the post
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Post"
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
+  /inbox/{id}/reject:
+    x-swagger-router-controller: inboxController
+    put:
+      description: Rejects an inbox post with the provided `id`
+      operationId: rejectInboxPost
+      parameters:
+        - name: id
+          in: path
+          description: The id of the post
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Post"
+        default:
+          description: Unexpected Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  
 definitions:
   Post:
     type: object

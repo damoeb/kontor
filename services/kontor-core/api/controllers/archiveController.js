@@ -1,22 +1,11 @@
 'use strict';
 
 const _ = require('lodash');
-const elasticsearch = require('../services/elasticsearch');
-const index = 'posts';
+const es = require('../services/elasticsearch');
+const index = 'archive';
 const type = 'posts';
 
-elasticsearch.assertIndex('posts');
-
-function guid() {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4();
-}
+es.assertIndex(index);
 
 function reply(res, data) {
   res.json({
@@ -37,11 +26,11 @@ function createResponseHandler(res) {
     }
   }
 }
-function findPost(req, res) {
+function findArchivePost(req, res) {
   const id = req.swagger.params.id.value;
-  console.log(`find ${id}`);
+  console.log(`find in archive ${id}`);
 
-  elasticsearch.client
+  es.client
     .get({
       index,
       type,
@@ -58,12 +47,12 @@ function findPost(req, res) {
 }
 
 function createPost(post, responseHandler) {
-  const id = guid();
+  const id = es.guid();
 
   // overwrite
   post.id = id;
 
-  elasticsearch.client.create({
+  es.client.create({
     index,
     type,
     id,
@@ -74,8 +63,8 @@ function createPost(post, responseHandler) {
 
 }
 
-function filterPosts(req, res) {
-  elasticsearch.client.search({
+function filterArchivePosts(req, res) {
+  es.client.search({
       index,
       type
     }, (error, response) => {
@@ -94,8 +83,8 @@ function filterPosts(req, res) {
 }
 
 module.exports = {
-  filterPosts: filterPosts,
-  findPost: findPost,
+  filterArchivePosts: filterArchivePosts,
+  findArchivePost: findArchivePost,
   updatePost: (req, res) => {
     const id = req.swagger.params.id.value;
     const post = req.swagger.params.post.value;
@@ -104,7 +93,7 @@ module.exports = {
     // overwrite
     post.id = id;
 
-    elasticsearch.client
+    es.client
       .update({
         index,
         type,
@@ -136,7 +125,7 @@ module.exports = {
     const id = req.swagger.params.id.value;
     console.log(`delete ${id}`);
 
-    elasticsearch.client.delete({index, type, id}, (error, response) => {
+    es.client.delete({index, type, id}, (error, response) => {
         if (error) {
           reply(res, {
             error: `${error}. ${response}`
@@ -160,9 +149,9 @@ module.exports = {
 // setTimeout(() => {
 //
 //   console.log('initialize');
-//   elasticsearch.client.indices.delete({index}, function (error) {
+//   es.client.indices.delete({index}, function (error) {
 //
-//     elasticsearch.client.indices.create({index}, function (error) {
+//     es.client.indices.create({index}, function (error) {
 //
 //       console.log('create posts');
 //

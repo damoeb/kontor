@@ -11,6 +11,8 @@ import { InboxComponent } from './inbox/inbox.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { InboxItemComponent } from './inbox-item/inbox-item.component';
 import { CreatePostComponent } from './create-post/create-post.component';
+import { ArchivedPostsComponent } from './archived-posts/archived-posts.component';
+import { InboxPostsComponent } from './inbox-posts/inbox-posts.component';
 
 const appRoutes: Routes = [
   { path: 'inbox', component: InboxComponent },
@@ -35,7 +37,9 @@ const appRoutes: Routes = [
     InboxComponent,
     ArchiveComponent,
     InboxItemComponent,
-    CreatePostComponent
+    CreatePostComponent,
+    ArchivedPostsComponent,
+    InboxPostsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
