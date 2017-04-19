@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InboxItemComponent } from './inbox-item.component';
+import { ArchivedPostComponent } from './post.component';
 
-describe('InboxItemComponent', () => {
-  let component: InboxItemComponent;
-  let fixture: ComponentFixture<InboxItemComponent>;
+describe('ArchivedPostComponent', () => {
+  let component: ArchivedPostComponent;
+  let fixture: ComponentFixture<ArchivedPostComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InboxItemComponent ]
+      declarations: [ ArchivedPostComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InboxItemComponent);
+    fixture = TestBed.createComponent(ArchivedPostComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

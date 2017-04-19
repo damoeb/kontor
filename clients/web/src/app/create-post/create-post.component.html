@@ -1,34 +1,32 @@
-<form>
-  <form (ngSubmit)="onSubmit()"
-  <div>
-    <h4>Add Link</h4>
-
+<div>
+  <form (ngSubmit)="onSubmit()">
     <div>
-      <label>URL</label>
-      <input [ngModel]="post.url" type="url">
+      <h4>Add Link</h4>
+
+      <div>
+        <label>URL</label>
+        <input [ngModel]="post.url" type="url">
+      </div>
+
+      <div>
+        <label>Title</label>
+        <input [ngModel]="post.title">
+      </div>
+
+      <div>
+        <label for="tags">Tags</label>
+        <input id="tags" [ngModel]=post.tags/>
+      </div>
+
+      <div>
+        <label>Biography</label>
+        <textarea [ngModel]="post.description" rows="5"></textarea>
+      </div>
     </div>
-
-    <div>
-      <label>Title</label>
-      <input [ngModel]="post.title">
+    <div class="modal-footer">
+      <button type="reset">Reset</button>
+      <button type="submit">Save Link</button>
     </div>
-
-    <div>
-      <label for="tags">Tags</label>
-      <input id="tags" [ngModel]=post.tags/>
-    </div>
-
-    <div>
-      <label>Biography</label>
-      <textarea [ngModel]="post.description" rows="5"></textarea>
-    </div>
-
-
-  </div>
-  <div class="modal-footer">
-    <button type="reset">Reset</button>
-    <button type="submit">Save Link</button>
-  </div>
-</form>
+  </form>
 </div>
 

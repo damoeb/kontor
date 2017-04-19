@@ -1,3 +1,8 @@
-<p>
-  archived-posts works!
-</p>
+<div *ngFor="let item of archived">
+  <div>
+    <app-post [post]="item"></app-post>
+    <div>
+      <a (ngClick)="onDelete()">Delete</a>
+    </div>
+  </div>
+</div>

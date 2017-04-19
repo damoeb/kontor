@@ -19,4 +19,11 @@ export class InboxPostsComponent implements OnInit {
     // this.inboxPosts = kontorApi.
   }
 
+  onArchive(post:Post) {
+    console.log('archive', post);
+  }
+
+  onIgnore(post:Post) {
+    console.log('ignore', post);
+  }
 }

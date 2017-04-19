@@ -49,6 +49,7 @@ function findInboxPost(req, res) {
 
 function addPostToInbox(post, responseHandler) {
   const id = es.guid();
+  console.log(`add to inbox ${post}`);
 
   // overwrite
   post.id = id;
@@ -64,14 +65,17 @@ function addPostToInbox(post, responseHandler) {
 }
 
 function acceptInboxPost(req, res) {
-
+  const id = req.swagger.params.id.value;
+  console.log(`accept inbox-post ${id}`);
 }
 
 function rejectInboxPost(req, res) {
-
+  const id = req.swagger.params.id.value;
+  console.log(`reject inbox-post ${id}`);
 }
 
 function filterInboxPosts(req, res) {
+  console.log(`filter inbox-posts`);
   es.client.search({
       index,
       type

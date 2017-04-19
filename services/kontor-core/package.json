@@ -14,7 +14,7 @@
     "test": "swagger project test && ember test",
     "serve": "node app",
     "swagger": "swagger project edit",
-    "postswagger": "npm run build",
+    "sync": "npm run build",
     "generate:swaggerjson": "./node_modules/yamljs/bin/yaml2json api/swagger/swagger.yaml > ./dist/swagger.json",
     "build": "npm run generate:swaggerjson"
   },

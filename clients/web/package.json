@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "serve": "ng serve",
+    "sync": "yarn generate:client",
     "generate:client": "java -jar swagger-codegen-cli.jar generate -i ../../services/kontor-core/dist/swagger.json -o src/app/generated/client -l typescript-angular2",
     "build": "npm run generate:client && ng build",
     "test": "ng test",

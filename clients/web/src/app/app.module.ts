@@ -7,16 +7,14 @@ import { RouterModule, Routes } from '@angular/router';
 import {DefaultApi as KontorApi} from './generated/client/api/DefaultApi';
 
 import { AppComponent } from './app.component';
-import { InboxComponent } from './inbox/inbox.component';
-import { ArchiveComponent } from './archive/archive.component';
-import { InboxItemComponent } from './inbox-item/inbox-item.component';
 import { CreatePostComponent } from './create-post/create-post.component';
 import { ArchivedPostsComponent } from './archived-posts/archived-posts.component';
 import { InboxPostsComponent } from './inbox-posts/inbox-posts.component';
+import { PostComponent } from './post/post.component';
 
 const appRoutes: Routes = [
-  { path: 'inbox', component: InboxComponent },
-  { path: 'archive', component: ArchiveComponent },
+  { path: 'inbox', component: InboxPostsComponent },
+  { path: 'archive', component: ArchivedPostsComponent },
   { path: 'create', component: CreatePostComponent },
   // {
   //   path: 'heroes',
@@ -27,19 +25,17 @@ const appRoutes: Routes = [
   //   redirectTo: '/heroes',
   //   pathMatch: 'full'
   // },
-  { path: '**', component: InboxComponent }
+  { path: '**', component: ArchivedPostsComponent }
 ];
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    InboxComponent,
-    ArchiveComponent,
-    InboxItemComponent,
     CreatePostComponent,
     ArchivedPostsComponent,
-    InboxPostsComponent
+    InboxPostsComponent,
+    PostComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

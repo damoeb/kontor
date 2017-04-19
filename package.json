@@ -1,0 +1,25 @@
+{
+  "name": "kontor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "initdb.js",
+  "scripts": {
+    "serve:client": "cd clients/web && ng serve",
+    "serve:core": "docker-compose up",
+    "init:database": "node initdb",
+    "init": "yarn init:database",
+    "sync:services/kontor-core": "cd services/kontor-core/ && yarn sync",
+    "sync:clients/web": "cd clients/web/ && yarn sync",
+    "sync": "yarn sync:services/kontor-core && yarn sync:clients/web"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/damoeb/kontor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/damoeb/kontor/issues"
+  },
+  "homepage": "https://github.com/damoeb/kontor#readme"
+}
